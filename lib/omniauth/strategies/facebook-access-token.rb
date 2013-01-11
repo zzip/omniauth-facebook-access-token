@@ -117,7 +117,8 @@ module OmniAuth
       def build_access_token
         ::OAuth2::AccessToken.from_hash(
           client, 
-          {"access_token" => request.params["access_token"]}.update(options.access_token_options)
+          {"access_token" => request.params["access_token"]}.update(options.access_token_options),
+          { expires_in: request.params["expires_in"] }
         )
       end
 
